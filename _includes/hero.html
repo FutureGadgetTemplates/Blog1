@@ -1,0 +1,38 @@
+{% assign featured_posts = site.posts | where: "featured", true | limit: 1 %}
+{% if featured_posts.size > 0 %}
+{% assign featured = featured_posts.first %}
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        {% if featured.categories.size > 0 %}
+        <span class="hero-category">{{ featured.categories.first }}</span>
+        {% endif %}
+        <h1 class="hero-title">
+          <a href="{{ featured.url | relative_url }}">{{ featured.title }}</a>
+        </h1>
+        <p class="hero-excerpt">{{ featured.excerpt | strip_html | truncate: 200 }}</p>
+        <div class="hero-meta">
+          <time datetime="{{ featured.date | date_to_xmlschema }}">{{ featured.date | date: "%B %d, %Y" }}</time>
+          <span class="reading-time">{{ featured.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+        </div>
+        <a href="{{ featured.url | relative_url }}" class="btn btn-primary">Read Article</a>
+      </div>
+      {% if featured.image %}
+      <div class="hero-image">
+        <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="hero hero-default">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">{{ site.title }}</h1>
+      <p class="hero-excerpt">{{ site.description }}</p>
+    </div>
+  </div>
+</section>
+{% endif %}

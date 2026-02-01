@@ -1,0 +1,22 @@
+{% assign prev_post = page.previous %}
+{% assign next_post = page.next %}
+
+{% if prev_post or next_post %}
+<nav class="post-navigation">
+  {% if prev_post %}
+  <a href="{{ prev_post.url | relative_url }}" class="post-nav-link post-nav-prev">
+    <span class="post-nav-label">&larr; Previous</span>
+    <span class="post-nav-title">{{ prev_post.title }}</span>
+  </a>
+  {% else %}
+  <div class="post-nav-placeholder"></div>
+  {% endif %}
+
+  {% if next_post %}
+  <a href="{{ next_post.url | relative_url }}" class="post-nav-link post-nav-next">
+    <span class="post-nav-label">Next &rarr;</span>
+    <span class="post-nav-title">{{ next_post.title }}</span>
+  </a>
+  {% endif %}
+</nav>
+{% endif %}

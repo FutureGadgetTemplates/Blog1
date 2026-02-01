@@ -1,0 +1,15 @@
+<div class="search-modal" id="search-modal" aria-hidden="true">
+  <div class="search-modal-overlay"></div>
+  <div class="search-modal-content">
+    <button class="search-modal-close" aria-label="Close search">
+      {% include icons/close.svg %}
+    </button>
+    <form class="search-form" action="{{ '/search/' | relative_url }}" method="get">
+      <input type="search" name="q" id="search-input" placeholder="Search articles..." autocomplete="off" autofocus>
+      <button type="submit" aria-label="Submit search">
+        {% include icons/search.svg %}
+      </button>
+    </form>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>

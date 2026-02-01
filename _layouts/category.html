@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<section class="archive-page">
+  <header class="archive-header">
+    <div class="container">
+      <h1 class="archive-title">{{ page.title }}</h1>
+      <p class="archive-description">Browse all posts in {{ page.title }}</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="content-wrapper">
+      <div class="posts-section">
+        {% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" %}
+
+        {% if category_posts.size > 0 %}
+        <div class="posts-grid">
+          {% for post in category_posts %}
+          {% include post-card.html post=post %}
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-posts">
+          <p>No posts found in this category.</p>
+        </div>
+        {% endif %}
+      </div>
+
+      {% include sidebar.html %}
+    </div>
+  </div>
+</section>

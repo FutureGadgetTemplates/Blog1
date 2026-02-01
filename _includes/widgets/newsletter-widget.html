@@ -1,0 +1,10 @@
+{% if site.newsletter.enabled %}
+<div class="widget widget-newsletter">
+  <h4 class="widget-title">Newsletter</h4>
+  <p>Subscribe to get the latest posts delivered to your inbox.</p>
+  <form action="{{ site.newsletter.action_url }}" method="post" class="newsletter-form-widget">
+    <input type="email" name="email" placeholder="Your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+{% endif %}

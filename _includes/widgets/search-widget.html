@@ -1,0 +1,9 @@
+<div class="widget widget-search">
+  <h4 class="widget-title">Search</h4>
+  <form class="search-form-widget" action="{{ '/search/' | relative_url }}" method="get">
+    <input type="search" name="q" placeholder="Search articles..." aria-label="Search">
+    <button type="submit" aria-label="Submit search">
+      {% include icons/search.svg %}
+    </button>
+  </form>
+</div>

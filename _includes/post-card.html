@@ -1,0 +1,28 @@
+<article class="post-card">
+  {% if include.post.image %}
+  <a href="{{ include.post.url | relative_url }}" class="post-card-image">
+    <img src="{{ include.post.image | relative_url }}" alt="{{ include.post.title }}" loading="lazy">
+  </a>
+  {% endif %}
+
+  <div class="post-card-content">
+    {% if include.post.categories.size > 0 %}
+    <div class="post-card-categories">
+      {% for category in include.post.categories limit: 1 %}
+      <a href="{{ '/categories/' | append: category | slugify | relative_url }}" class="category-tag">{{ category }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h3 class="post-card-title">
+      <a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+    </h3>
+
+    <p class="post-card-excerpt">{{ include.post.excerpt | strip_html | truncate: 120 }}</p>
+
+    <div class="post-card-meta">
+      <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%b %d, %Y" }}</time>
+      <span class="reading-time">{{ include.post.content | number_of_words | divided_by: 200 | plus: 1 }} min</span>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+{% include hero.html %}
+
+<section class="container">
+  <div class="content-wrapper">
+    <div class="posts-section">
+      {% if site.posts.size > 0 %}
+      <h2 class="section-title">Latest Posts</h2>
+
+      <div class="posts-grid">
+        {% for post in paginator.posts %}
+        {% include post-card.html post=post %}
+        {% endfor %}
+      </div>
+
+      {% include pagination.html %}
+      {% else %}
+      <div class="no-posts">
+        <h2>No posts yet</h2>
+        <p>Start adding posts to your _posts directory to see them here.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    {% include sidebar.html %}
+  </div>
+</section>

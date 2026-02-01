@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="container">
+      {% if page.categories.size > 0 %}
+      <div class="post-categories">
+        {% for category in page.categories %}
+        <a href="{{ '/categories/' | append: category | slugify | relative_url }}" class="category-tag">{{ category }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h1 class="post-title">{{ page.title }}</h1>
+
+      <div class="post-meta">
+        {% if page.author %}
+        {% assign author = site.authors | where: "name", page.author | first %}
+        <div class="author-info">
+          {% if author.avatar %}
+          <img src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}" class="author-avatar">
+          {% endif %}
+          <span class="author-name">{{ author.display_name | default: page.author }}</span>
+        </div>
+        {% endif %}
+
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+
+        {% if page.content %}
+        <span class="reading-time">{{ page.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  {% if page.image %}
+  <div class="post-featured-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
+  <div class="container">
+    <div class="post-content-wrapper">
+      <div class="post-content">
+        {{ content }}
+
+        {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          <span class="tags-label">Tags:</span>
+          {% for tag in page.tags %}
+          <a href="{{ '/tags/' | append: tag | slugify | relative_url }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% include social-share.html %}
+
+        {% include author-box.html %}
+
+        {% include post-navigation.html %}
+
+        {% include comments.html %}
+      </div>
+
+      {% include sidebar.html %}
+    </div>
+  </div>
+</article>
+
+{% include related-posts.html %}

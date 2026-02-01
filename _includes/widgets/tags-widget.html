@@ -1,0 +1,11 @@
+{% if site.tags.size > 0 %}
+<div class="widget widget-tags">
+  <h4 class="widget-title">Popular Tags</h4>
+  <div class="tags-cloud">
+    {% assign sorted_tags = site.tags | sort %}
+    {% for tag in sorted_tags limit: 15 %}
+    <a href="{{ '/tags/' | append: tag[0] | slugify | relative_url }}" class="tag">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

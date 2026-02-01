@@ -1,0 +1,28 @@
+{% if page.author %}
+{% assign author = site.authors | where: "name", page.author | first %}
+{% if author %}
+<div class="author-box">
+  {% if author.avatar %}
+  <img src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}" class="author-box-avatar">
+  {% endif %}
+  <div class="author-box-content">
+    <h4 class="author-box-name">
+      <a href="{{ author.url | relative_url }}">{{ author.display_name }}</a>
+    </h4>
+    {% if author.bio %}
+    <p class="author-box-bio">{{ author.bio }}</p>
+    {% endif %}
+    {% if author.social %}
+    <div class="author-box-social">
+      {% if author.social.twitter %}
+      <a href="https://twitter.com/{{ author.social.twitter }}" target="_blank" rel="noopener">Twitter</a>
+      {% endif %}
+      {% if author.social.linkedin %}
+      <a href="https://linkedin.com/in/{{ author.social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endif %}

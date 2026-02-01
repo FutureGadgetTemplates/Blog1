@@ -1,0 +1,78 @@
+# Site Settings
+title: Your Blog Title
+description: A modern blog template inspired by the best design practices
+author: Your Name
+email: your-email@example.com
+url: "https://futuregadgettemplates.github.io" # Your site URL (no trailing slash)
+baseurl: "/Blog1" # Subpath if hosted in subdirectory (e.g., /blog)
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+# Pagination
+paginate: 6
+paginate_path: "/page/:num/"
+
+# Collections
+collections:
+  authors:
+    output: true
+    permalink: /authors/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "default"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Social Links
+social:
+  twitter: your_twitter
+  instagram: your_instagram
+  facebook: your_facebook
+  linkedin: your_linkedin
+  github: your_github
+  youtube: your_youtube
+
+# Newsletter (Mailchimp or similar)
+newsletter:
+  enabled: true
+  action_url: "" # Your newsletter signup form action URL
+
+# Comments (Disqus)
+disqus:
+  shortname: "" # Your Disqus shortname
+
+# Analytics (Google Analytics)
+google_analytics: "" # Your GA tracking ID (e.g., UA-XXXXXXXX-X)
+
+# SEO
+twitter:
+  card: summary_large_image
+  username: your_twitter
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - LICENSE
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate

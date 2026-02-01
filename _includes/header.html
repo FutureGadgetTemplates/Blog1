@@ -1,0 +1,44 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar">
+      <a href="{{ '/' | relative_url }}" class="logo">
+        {% if site.logo %}
+        <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}">
+        {% else %}
+        <span class="logo-text">{{ site.title }}</span>
+        {% endif %}
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a></li>
+        <li><a href="{{ '/categories/' | relative_url }}" {% if page.url contains '/categories' %}class="active"{% endif %}>Categories</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-toggle" aria-label="Search">
+          {% include icons/search.svg %}
+        </button>
+        <div class="social-links-header">
+          {% if site.social.twitter %}
+          <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+            {% include icons/twitter.svg %}
+          </a>
+          {% endif %}
+          {% if site.social.instagram %}
+          <a href="https://instagram.com/{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+            {% include icons/instagram.svg %}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+{% include search-modal.html %}

@@ -1,0 +1,24 @@
+<div class="social-share">
+  <span class="share-label">Share this article:</span>
+  <div class="share-buttons">
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url | uri_escape }}"
+       target="_blank" rel="noopener" class="share-btn share-twitter" aria-label="Share on Twitter">
+      {% include icons/twitter.svg %}
+      <span>Twitter</span>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | uri_escape }}"
+       target="_blank" rel="noopener" class="share-btn share-facebook" aria-label="Share on Facebook">
+      {% include icons/facebook.svg %}
+      <span>Facebook</span>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url | uri_escape }}&title={{ page.title | uri_escape }}"
+       target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Share on LinkedIn">
+      {% include icons/linkedin.svg %}
+      <span>LinkedIn</span>
+    </a>
+    <button class="share-btn share-copy" data-url="{{ page.url | absolute_url }}" aria-label="Copy link">
+      {% include icons/link.svg %}
+      <span>Copy Link</span>
+    </button>
+  </div>
+</div>
